@@ -22,7 +22,8 @@ class welcomepage extends StatelessWidget {
               SizedBox(
 
                   child:
-                  ElevatedButton(onPressed: (){}, child: Text("Get Started" ,style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,color: Colors.white),))),
+                  ElevatedButton( style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(9)), backgroundColor: Color(0xff484783) ),
+                      onPressed: (){}, child: Text("Get Started" ,style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700,color: Colors.white),))),
             ], ),
 
           ) ,
