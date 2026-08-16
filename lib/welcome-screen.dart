@@ -10,6 +10,7 @@ class welcomepage extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsetsDirectional.all(10),
+
             decoration: BoxDecoration(color: Color(0xff7876CD), borderRadius: BorderRadius.circular(25) ),
             child: Column(children: [
               Text("Know Your Body Better ,Get Your BMI Score in Less Than a Minute!" ,style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700,color: Colors.white),),
