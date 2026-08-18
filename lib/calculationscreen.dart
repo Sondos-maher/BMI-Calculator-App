@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 
-class CalculationScreen extends StatelessWidget {
+class CalculationScreen extends StatefulWidget {
   const CalculationScreen({super.key});
 
+  @override
+  State<CalculationScreen> createState() => _CalculationScreenState();
+}
+
+class _CalculationScreenState extends State<CalculationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: GestureDetector(
-            onTap: (){
-              Navigator.pop(context);
-            },
-            child: Icon(Icons.arrow_back_ios)),
+        title: Text("BMI", style: TextStyle(
+          letterSpacing: 20,
 
+        ),),
       ),
-      body: Center(child: Text(
-          "Cal Screen"
-      )),
+
+
     );
   }
 }
