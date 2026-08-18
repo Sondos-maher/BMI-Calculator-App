@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(title: "calculta app",
-    home:  const welcomepage() , );
+    home:  const WelcomePage() , );
   }
 }
 
