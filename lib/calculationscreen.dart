@@ -34,7 +34,8 @@ class _calculationscreenState extends State<calculationscreen> {
                   hintText: "ex.Sondos Maher",
                   enabledBorder:  OutlineInputBorder(borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide.none,
-                  )
+                  ),
+                 focusedBorder: OutlineInputBorder(borderSide: BorderSide.none)
 
                 ) ,
                 validator:(value) {
@@ -57,8 +58,9 @@ class _calculationscreenState extends State<calculationscreen> {
                     hintText: "ex.Sondos Maher",
                     enabledBorder:  OutlineInputBorder(borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide.none,
-                    )
 
+                    ),
+                  focusedBorder: OutlineInputBorder(borderSide: BorderSide.none)
                 ) ,
                 validator:(value) {
                   if(_TextName.text.isEmpty){
@@ -69,6 +71,27 @@ class _calculationscreenState extends State<calculationscreen> {
 
               ),
               SizedBox(height: 20,),
+              Text("Choose Gender",style: TextStyle(color: Colors.black,fontSize: 18),),
+              Row(children: [
+                Column(children: [
+                  ElevatedButton(onPressed: (){},
+                    style: ElevatedButton.styleFrom(backgroundColor: Color(0xffEBEDFC),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(20)),),
+                    child: Image.asset("female.png"),),
+                  Text("Male",style: TextStyle(color: Colors.black,fontSize: 18),),
+                ],),
+                SizedBox(height: 20,),
+                Column(children: [
+                  ElevatedButton(onPressed: (){},
+                    style: ElevatedButton.styleFrom(backgroundColor: Color(0xffEBEDFC),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(20)),),
+                    child: Image.asset("female.png"),),
+                  Text("Male",style: TextStyle(color: Colors.black,fontSize: 18),),
+                ],),
+
+
+
+              ],)
 
             ],),
 
