@@ -72,21 +72,29 @@ class _calculationscreenState extends State<calculationscreen> {
               ),
               SizedBox(height: 20,),
               Text("Choose Gender",style: TextStyle(color: Colors.black,fontSize: 18),),
-              Row(children: [
+              SizedBox(height: 20,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                children: [
                 Column(children: [
-                  ElevatedButton(onPressed: (){},
-                    style: ElevatedButton.styleFrom(backgroundColor: Color(0xffEBEDFC),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(20)),),
-                    child: Image.asset("female.png"),),
-                  Text("Male",style: TextStyle(color: Colors.black,fontSize: 18),),
+                  Container(
+                    decoration:BoxDecoration( color: Color(0xff7876CD),borderRadius: BorderRadius.circular(20),) ,
+
+                    child:
+                      Image.asset("assets/Group.png"),
+
+                  ),
                 ],),
-                SizedBox(height: 20,),
+                SizedBox(width: 30,),
+
                 Column(children: [
-                  ElevatedButton(onPressed: (){},
-                    style: ElevatedButton.styleFrom(backgroundColor: Color(0xffEBEDFC),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(20)),),
-                    child: Image.asset("female.png"),),
-                  Text("Male",style: TextStyle(color: Colors.black,fontSize: 18),),
+                  Container(
+                    child:
+                      Image.asset("assets/female.png"),
+
+                  ),
                 ],),
 
 
