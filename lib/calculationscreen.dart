@@ -93,186 +93,158 @@ class _calculationscreenState extends State<calculationscreen> {
 
 
               SizedBox(height: 20,),
-              Text("Choose Gender",style: TextStyle(color: Colors.black,fontSize: 18),),
-              SizedBox(height: 20,),
-
+              Text(
+                "select gender",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-
                 children: [
                   GestureDetector(
                     onTap: () {
-                      selectedgender=0;
-                      setState(() {
-
-                      });
-
+                      selectedgender = 0;
+                      setState(() {});
                     },
-                    child: Column(
-                      children: [
-                        Container(
-                            decoration:BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Color(0x26B3B2EA),
-                              border: selectedgender == 0
-                                  ? Border.all(
-                                color: Color(0xff484783),
-                                width: 3,
-                              )
-                                  : null,
-                            ),
-
-                            child:Column(children: [
-                              Image.asset("assets/Group.png",),
-
-                            ],)
-
-                        ),
-                        Text("male",style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),)
-
-                      ],
+                    child: Container(
+                      height: 90,
+                      width: 90,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Color(0x26B3B2EA),
+                        border: selectedgender == 0
+                            ? Border.all(width: 1, color: Color(0xE501502E))
+                            : null,
+                      ),
+                      child: Image.asset("assets/Group.png"),
                     ),
                   ),
-                  SizedBox(width: 40,),
+                  SizedBox(width: 40),
                   GestureDetector(
                     onTap: () {
-                      selectedgender=0;
-                      setState(() {
-
-                      });
-
+                      selectedgender = 1;
+                      setState(() {});
                     },
-                    child: Column(
-                      children: [
-                        Container(
-                            decoration:BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Color(0x26B3B2EA),
-                              border: selectedgender == 1
-                                  ? Border.all(
-                                color: Color(0xff484783),
-                                width: 3,
-                              )
-                                  : null,
-                            ),
-
-                            child:Column(children: [
-                              Image.asset("assets/female.png",),
-
-                            ],)
-
-                        ),
-                        Text("female",style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),)
-
-                      ],
+                    child: Container(
+                      height: 90,
+                      width: 90,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Color(0x26B3B2EA),
+                        border: selectedgender == 1
+                            ? Border.all(width: 1, color: Color(0xE501502E))
+                            : null,
+                      ),
+                      child: Image.asset("assets/female.png"),
                     ),
                   ),
-
-
-
-
-
-                ],),
+                ],
+              ),
               SizedBox(height: 10,),
               Text(
-                "Your Hight(CM)",
+                "Your Height(cm)",
                 style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight(500),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.black,
                 ),
               ),
-
               SizedBox(height: 10),
-
               TextFormField(
-                readOnly: true,
-
-                controller: _hightController,
-                maxLength: 50,
-
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "this is reqiered";
-                  }
-                  return null;
-                },
-
+                textAlign: TextAlign.center,
+                controller:_hightController ,
                 decoration: InputDecoration(
-
-                  suffixIcon: GestureDetector(onTap: (){
-                    var x = int.parse(_hightController as String);
-                    if(x>1){
-                      counter--;
-
-                    }
-                  } ,child: Icon (Icons.add, size :26 ,color: Colors.black, )),
-                  prefixIcon: GestureDetector(onTap: (){ counter++;},child: Icon (Icons.remove, size :26 ,color: Colors.black, ),),
+                  suffixIcon: GestureDetector(
+                    onTap: () {
+                      var x = int.parse(_hightController.text);
+                      x++;
+                      _hightController.text = x.toString();
+                    },
+                    child: Icon(Icons.add, size: 26, color: Colors.black),
+                  ),
+                  prefixIcon: GestureDetector(
+                    onTap: () {
+                      var x = int.parse(_hightController.text);
+                      if (x > 0) {
+                        x--;
+                      }
+                      _hightController.text = x.toString();
+                    },
+                    child: Icon(Icons.remove, size: 26, color: Colors.black),
+                  ),
+                  counterText: "",
                   fillColor: Color(0x26B3B2EA),
                   filled: true,
-
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(16),
                     borderSide: BorderSide.none,
                   ),
-
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(16),
+                    borderSide: BorderSide.none,
                   ),
                 ),
-              ),SizedBox(height: 10,),
+                maxLength: 50,
+
+              ),
+
+
+              SizedBox(height: 24),
+
+
               Text(
-                "Your weight(kg)",
+                "Your Weight(kg)",
                 style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight(500),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.black,
                 ),
               ),
-
               SizedBox(height: 10),
-
               TextFormField(
+                textAlign: TextAlign.center,
                 controller: _weightcontroller,
-                maxLength: 50,
-
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "this is reqiered";
-                  }
-                  return null;
-                },
-
                 decoration: InputDecoration(
-                  suffixIcon: GestureDetector(onTap: (){
-                    // var x = int.parse(_hightController)
-                  } ,child: Icon (Icons.add, size :26 ,color: Colors.black, )),
-                  prefixIcon: GestureDetector(onTap: (){},child: Icon (Icons.remove, size :26 ,color: Colors.black, ),),
+                  suffixIcon: GestureDetector(
+                    onTap: () {
+                      var x = int.parse(_weightcontroller.text);
+                      x++;
+                      _weightcontroller.text = x.toString();
+                    },
+                    child: Icon(Icons.add, size: 26, color: Colors.black),
+                  ),
+                  prefixIcon: GestureDetector(
+                    onTap: () {
+                      var x = int.parse(_weightcontroller.text);
+                      if (x > 0) {
+                        x--;
+                      }
+                      _weightcontroller.text = x.toString();
+                    },
+                    child: Icon(Icons.remove, size: 26, color: Colors.black),
+                  ),
+                  counterText: "",
                   fillColor: Color(0x26B3B2EA),
                   filled: true,
-
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(16),
                     borderSide: BorderSide.none,
                   ),
-
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(16),
+                    borderSide: BorderSide.none,
                   ),
                 ),
+                maxLength: 50,
+
               ),
+
+
+              Spacer(),
               SizedBox(height: 50 ),
 
               ElevatedButton(
@@ -284,7 +256,16 @@ class _calculationscreenState extends State<calculationscreen> {
                   minimumSize: Size(double.infinity, 40),
                 ),
 
-                onPressed: () {},
+                onPressed: () {
+                  if (check.currentState!.validate()) {
+                    print(_TextName.text);
+                    print(_birthDateController.text);
+                    print(selectedgender);
+                    print(_hightController.text);
+                    print(_weightcontroller.text);
+                  }
+
+                },
 
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -296,6 +277,8 @@ class _calculationscreenState extends State<calculationscreen> {
                   ],
                 ),
               ),
+              SizedBox(height: 40,)
+
 
 
             ],),
