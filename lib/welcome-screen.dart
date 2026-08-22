@@ -13,6 +13,7 @@ class WelcomePage extends StatelessWidget {
       ),
       body:
       Column(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Image.asset("assets/Illustration.png"),
           Container(
