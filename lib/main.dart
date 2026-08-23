@@ -8,6 +8,14 @@ void main() async {
   var link = "https://jsonplaceholder.typicode.com/users";
   var res = await apiobject.get(link);
   print(res);
+  print("################################# create user");
+  var body={
+
+  };
+  var link2 = "https://jsonplaceholder.typicode.com/users";
+  var res2 = await apiobject.get(link2);
+
+
 }
 
 
