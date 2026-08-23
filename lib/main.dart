@@ -10,10 +10,16 @@ void main() async {
   print(res);
   print("################################# create user");
   var body={
+    {
+      "name": "Sondos Maher",
+      "username": "SM",
+      "email": "Sondos@nti.com"
+    }
 
   };
   var link2 = "https://jsonplaceholder.typicode.com/users";
-  var res2 = await apiobject.get(link2);
+  var res2 = await apiobject.post(link2,data: body);
+  print (res2);
 
 
 }
