@@ -1,3 +1,4 @@
+import 'package:bmi_aug/result.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart' show Dio, Options;
 
@@ -290,11 +291,12 @@ class _calculationscreenState extends State<calculationscreen> {
                    if(res.data!=null){
                      var Data =res.data;
                      Data['name']=_TextName.text;
-                     Data['birth date']=_birthDateController.text;
+                     Data['birthDate']=_birthDateController.text;
                      Data['gender']=selectedgender==0?"male":"female";
-                     Data['height']=_hightController.text;
-                     Data['weight']=_weightcontroller.text;
                      var bmimodel = BmiResponse.fromJson(Data);
+                     print(Data["status"]);
+                     if (!mounted) return;
+                     Navigator.push(context, MaterialPageRoute(builder: (context) => BmiDetails(bmiModel: bmimodel)));
 
 
 
