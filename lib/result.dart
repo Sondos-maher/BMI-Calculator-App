@@ -146,14 +146,17 @@ class BmiDetails extends StatelessWidget {
             const Spacer(),
 
             SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
+                width: 420,
+
+                child:  ElevatedButton(onPressed:(){
                   Navigator.pop(context);
                 },
-                child: const Text("Calculate BMI Again"),
-              ),
+                  child: Text("Calculate BMI Again",
+                    style:TextStyle(color: Color(0xffFFFFFF),fontSize: 18,fontWeight: FontWeight.w600),),
+                  style:ElevatedButton.styleFrom(backgroundColor: Color(0xff484783),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(10))),)
             ),
+            SizedBox(height: 15,),
           ],
         ),
       ),
