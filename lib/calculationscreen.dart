@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart' show Dio, Options;
 
+import 'models/bmi_model.dart';
+
 
 class calculationscreen extends StatefulWidget {
   const calculationscreen({super.key});
@@ -23,9 +25,16 @@ class _calculationscreenState extends State<calculationscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
-        title: Center(child: Text("BMI", style: TextStyle(fontWeight: FontWeight.w900,fontSize: 40,color: Color(0xff01502EE5),letterSpacing:5),)),),
-
+      title: Text(
+      "BMI",
+      style: TextStyle(
+        letterSpacing: 20,
+        fontWeight: FontWeight.w900,
+        fontSize: 26,
+        color: const Color(0xE501502E),
+      ),
+    ),
+    ),
       body:
       Padding(
 
@@ -278,7 +287,20 @@ class _calculationscreenState extends State<calculationscreen> {
                       ),
 
                     );
-                    print(res);
+                   if(res.data!=null){
+                     var Data =res.data;
+                     Data['name']=_TextName.text;
+                     Data['birth date']=_birthDateController.text;
+                     Data['gender']=selectedgender==0?"male":"female";
+                     Data['height']=_hightController.text;
+                     Data['weight']=_weightcontroller.text;
+                     var bmimodel = BmiResponse.fromJson(Data);
+
+
+
+
+
+                   }
                   }
 
                 },
