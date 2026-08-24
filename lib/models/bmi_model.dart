@@ -1,33 +1,22 @@
 class BmiResponse {
-  final String? status;
+  final String status;
   final dynamic error;
-  final BmiData? data;
-  final PremiumData? premium;
-  final String? birthDate;
-  final String? name;
-  final String? gender;
+  final BmiData data;
+  final Premium premium;
 
   BmiResponse({
-    this.status,
-    this.error,
-    this.data,
-    this.premium,
-    this.birthDate,
-    this.name,
-    this.gender,
+    required this.status,
+    required this.error,
+    required this.data,
+    required this.premium,
   });
 
   factory BmiResponse.fromJson(Map<String, dynamic> json) {
     return BmiResponse(
       status: json['status'],
       error: json['error'],
-      data: json['data'] != null ? BmiData.fromJson(json['data']) : null,
-      premium: json['premium'] != null
-          ? PremiumData.fromJson(json['premium'])
-          : null,
-      birthDate: json['birthDate'],
-      name: json['name'],
-      gender: json['gender'],
+      data: BmiData.fromJson(json['data']),
+      premium: Premium.fromJson(json['premium']),
     );
   }
 
@@ -35,51 +24,46 @@ class BmiResponse {
     return {
       'status': status,
       'error': error,
-      'data': data?.toJson(),
-      'premium': premium?.toJson(),
-      'birthDate': birthDate,
-      'name': name,
-      'gender': gender,
+      'data': data.toJson(),
+      'premium': premium.toJson(),
     };
   }
 }
-
 class BmiData {
-  final String? height;
-  final String? weight;
-  final double? bmi;
-  final double? bmiPrime;
-  final String? category;
-  final String? risk;
-  final String? summary;
-  final IdealWeightRange? idealWeightRange;
-  final double? weightToChange;
+  final String height;
+  final String weight;
+  final double bmi;
+  final dynamic bmiPrime;
+  final String category;
+  final dynamic risk;
+  final dynamic summary;
+  final IdealWeightRange idealWeightRange;
+  final dynamic weightToChange;
 
   BmiData({
-    this.height,
-    this.weight,
-    this.bmi,
-    this.bmiPrime,
-    this.category,
-    this.risk,
-    this.summary,
-    this.idealWeightRange,
-    this.weightToChange,
+    required this.height,
+    required this.weight,
+    required this.bmi,
+    required this.bmiPrime,
+    required this.category,
+    required this.risk,
+    required this.summary,
+    required this.idealWeightRange,
+    required this.weightToChange,
   });
 
   factory BmiData.fromJson(Map<String, dynamic> json) {
     return BmiData(
       height: json['height'],
       weight: json['weight'],
-      bmi: (json['bmi'] as num?)?.toDouble(),
-      bmiPrime: (json['bmiPrime'] as num?)?.toDouble(),
+      bmi: (json['bmi'] as num).toDouble(),
+      bmiPrime: json['bmiPrime'],
       category: json['category'],
       risk: json['risk'],
       summary: json['summary'],
-      idealWeightRange: json['idealWeightRange'] != null
-          ? IdealWeightRange.fromJson(json['idealWeightRange'])
-          : null,
-      weightToChange: (json['weightToChange'] as num?)?.toDouble(),
+      idealWeightRange:
+      IdealWeightRange.fromJson(json['idealWeightRange']),
+      weightToChange: json['weightToChange'],
     );
   }
 
@@ -92,46 +76,54 @@ class BmiData {
       'category': category,
       'risk': risk,
       'summary': summary,
-      'idealWeightRange': idealWeightRange?.toJson(),
+      'idealWeightRange': idealWeightRange.toJson(),
       'weightToChange': weightToChange,
     };
   }
 }
-
 class IdealWeightRange {
-  final double? min;
-  final double? max;
-  final String? unit;
+  final double min;
+  final double max;
+  final String unit;
 
-  IdealWeightRange({this.min, this.max, this.unit});
+  IdealWeightRange({
+    required this.min,
+    required this.max,
+    required this.unit,
+  });
 
   factory IdealWeightRange.fromJson(Map<String, dynamic> json) {
     return IdealWeightRange(
-      min: (json['min'] as num?)?.toDouble(),
-      max: (json['max'] as num?)?.toDouble(),
+      min: (json['min'] as num).toDouble(),
+      max: (json['max'] as num).toDouble(),
       unit: json['unit'],
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {'min': min, 'max': max, 'unit': unit};
+    return {
+      'min': min,
+      'max': max,
+      'unit': unit,
+    };
   }
 }
+class Premium {
+  final String message;
+  final String upgradeUrl;
+  final List<String> lockedFields;
 
-class PremiumData {
-  final String? message;
-  final String? upgradeUrl;
-  final List<String>? lockedFields;
+  Premium({
+    required this.message,
+    required this.upgradeUrl,
+    required this.lockedFields,
+  });
 
-  PremiumData({this.message, this.upgradeUrl, this.lockedFields});
-
-  factory PremiumData.fromJson(Map<String, dynamic> json) {
-    return PremiumData(
+  factory Premium.fromJson(Map<String, dynamic> json) {
+    return Premium(
       message: json['message'],
       upgradeUrl: json['upgrade_url'],
-      lockedFields: json['locked_fields'] != null
-          ? List<String>.from(json['locked_fields'])
-          : null,
+      lockedFields: List<String>.from(json['locked_fields']),
     );
   }
 
@@ -143,4 +135,3 @@ class PremiumData {
     };
   }
 }
-

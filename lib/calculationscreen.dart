@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart' show Dio, Options;
+
 
 class calculationscreen extends StatefulWidget {
   const calculationscreen({super.key});
@@ -256,13 +258,27 @@ class _calculationscreenState extends State<calculationscreen> {
                   minimumSize: Size(double.infinity, 40),
                 ),
 
-                onPressed: () {
+                onPressed: () async {
                   if (check.currentState!.validate()) {
                     print(_TextName.text);
                     print(_birthDateController.text);
                     print(selectedgender);
                     print(_hightController.text);
                     print(_weightcontroller.text);
+
+
+                    var dio = Dio();
+                    var res = await dio.get(
+                      "https://api.apiverve.com/v1/bmicalculator?weight=${_weightcontroller.text}&height=${_hightController.text}&unit=metric",
+                      options: Options(
+                          headers: {
+                            "x-api-key":"apv_efe419ed-1da2-4df8-b229-a79e77401e08"
+
+                          }
+                      ),
+
+                    );
+                    print(res);
                   }
 
                 },
