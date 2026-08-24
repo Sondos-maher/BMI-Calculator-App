@@ -40,7 +40,8 @@ class _calculationscreenState extends State<calculationscreen> {
       Padding(
 
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Form(
+        child:
+        Form(
           key: check,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,7 +88,7 @@ class _calculationscreenState extends State<calculationscreen> {
                     counterText: "",
                     fillColor: Color(0x26B3B2EA),
                     filled: true,
-                    hintText: "",
+                    hintText: "22/10/2005",
                     enabledBorder:  OutlineInputBorder(borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide.none,
 
