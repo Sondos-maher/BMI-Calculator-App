@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'models/bmi_model.dart';
+import '../models/bmi_model.dart';
 
 class BmiDetails extends StatelessWidget {
   final BmiResponse bmiModel;

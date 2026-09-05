@@ -1,4 +1,4 @@
-import 'package:bmi_aug/welcome-screen.dart';
+import 'package:bmi_aug/ui_screens/welcome-screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

@@ -1,9 +1,8 @@
-import 'package:bmi_aug/result.dart';
+import 'package:bmi_aug/ui_screens/result.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart' show Dio, Options;
 
-import 'models/bmi_model.dart';
-
+import '../models/bmi_model.dart';
 
 class calculationscreen extends StatefulWidget {
   const calculationscreen({super.key});
@@ -13,99 +12,117 @@ class calculationscreen extends StatefulWidget {
 }
 
 class _calculationscreenState extends State<calculationscreen> {
-  final GlobalKey<FormState> check =GlobalKey<FormState>();
-  TextEditingController _TextName =TextEditingController();
-  TextEditingController _birthDateController =TextEditingController();
-  TextEditingController _hightController =TextEditingController();
-  TextEditingController _weightcontroller =TextEditingController();
+  final GlobalKey<FormState> check = GlobalKey<FormState>();
+  TextEditingController _TextName = TextEditingController();
+  TextEditingController _birthDateController = TextEditingController();
+  TextEditingController _hightController = TextEditingController();
+  TextEditingController _weightcontroller = TextEditingController();
 
-  var selectedgender=0;
-  int counter=0;
+  var selectedgender = 0;
+  int counter = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      title: Text(
-      "BMI",
-      style: TextStyle(
-        letterSpacing: 20,
-        fontWeight: FontWeight.w900,
-        fontSize: 26,
-        color: const Color(0xE501502E),
+        title: Center(
+          child: Text(
+            "BMI",
+            style: TextStyle(
+              letterSpacing: 20,
+              fontWeight: FontWeight.w900,
+              fontSize: 26,
+              color: const Color(0xE501502E),
+            ),
+          ),
+        ),
       ),
-    ),
-    ),
-      body:
-      Padding(
-
+      body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child:
-        Form(
+        child: Form(
           key: check,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Name",style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.w600),),
+              Text(
+                "Name",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
               TextFormField(
                 maxLength: 50,
+                autofocus: true,
                 controller: _TextName,
-                decoration:InputDecoration(
-                    counterText: "",
-                    fillColor: Color(0x26B3B2EA),
-                    filled: true,
-                    hintText: "ex.Sondos Maher",
-                    enabledBorder:  OutlineInputBorder(borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide.none,
-                    ),
-                    focusedBorder: OutlineInputBorder(borderSide: BorderSide.none)
-
-                ) ,
-                validator:(value) {
-                  if(_TextName.text.isEmpty){
+                decoration: InputDecoration(
+                  counterText: "",
+                  fillColor: Color(0x26B3B2EA),
+                  filled: true,
+                  hintText: "ex.Sondos Maher",
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+                validator: (value) {
+                  if (_TextName.text.isEmpty) {
                     return "This is required";
                   }
                   return null;
                 },
-
               ),
               SizedBox(height: 20),
-              Text("Birth Date",style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.w600),),
+              Text(
+                "Birth Date",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
               TextFormField(
                 readOnly: true,
                 maxLength: 50,
                 controller: _birthDateController,
-                onTap:()async {
-                  var res= await showDatePicker(context: context, firstDate:  DateTime(1980), lastDate: DateTime.now());
+                onTap: () async {
+                  var res = await showDatePicker(
+                    context: context,
+                    firstDate: DateTime(1980),
+                    lastDate: DateTime.now(),
+                  );
                   print({"show"});
-                  if(res!=null){
-                    _birthDateController.text=res.toString();
+                  if (res != null) {
+                    _birthDateController.text = res.toString().split(' ')[0];
                   }
-
                 },
 
-                decoration:InputDecoration(
-                    counterText: "",
-                    fillColor: Color(0x26B3B2EA),
-                    filled: true,
-                    hintText: "22/10/2005",
-                    enabledBorder:  OutlineInputBorder(borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide.none,
-
-                    ),
-                    focusedBorder: OutlineInputBorder(borderSide: BorderSide.none)
-                ) ,
-                validator:(value) {
-                  if(value==null|| value.isEmpty){
+                decoration: InputDecoration(
+                  counterText: "",
+                  fillColor: Color(0x26B3B2EA),
+                  filled: true,
+                  hintText: "22/10/2005",
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
                     return "This is required";
                   }
                   return null;
                 },
-
               ),
 
-
-              SizedBox(height: 20,),
+              SizedBox(height: 20),
               Text(
                 "select gender",
                 style: TextStyle(
@@ -157,7 +174,7 @@ class _calculationscreenState extends State<calculationscreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 10),
               Text(
                 "Your Height(cm)",
                 style: TextStyle(
@@ -169,7 +186,7 @@ class _calculationscreenState extends State<calculationscreen> {
               SizedBox(height: 10),
               TextFormField(
                 textAlign: TextAlign.center,
-                controller:_hightController ,
+                controller: _hightController,
                 decoration: InputDecoration(
                   suffixIcon: GestureDetector(
                     onTap: () {
@@ -202,12 +219,9 @@ class _calculationscreenState extends State<calculationscreen> {
                   ),
                 ),
                 maxLength: 50,
-
               ),
 
-
               SizedBox(height: 24),
-
 
               Text(
                 "Your Weight(kg)",
@@ -253,12 +267,10 @@ class _calculationscreenState extends State<calculationscreen> {
                   ),
                 ),
                 maxLength: 50,
-
               ),
 
-
               Spacer(),
-              SizedBox(height: 50 ),
+              SizedBox(height: 50),
 
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -277,57 +289,49 @@ class _calculationscreenState extends State<calculationscreen> {
                     print(_hightController.text);
                     print(_weightcontroller.text);
 
-
                     var dio = Dio();
                     var res = await dio.get(
                       "https://api.apiverve.com/v1/bmicalculator?weight=${_weightcontroller.text}&height=${_hightController.text}&unit=metric",
                       options: Options(
-                          headers: {
-                            "x-api-key":"apv_efe419ed-1da2-4df8-b229-a79e77401e08"
-
-                          }
+                        headers: {
+                          "x-api-key":
+                              "apv_efe419ed-1da2-4df8-b229-a79e77401e08",
+                        },
                       ),
-
                     );
-                   if(res.data!=null){
-                     var Data =res.data;
-                     Data['name']=_TextName.text;
-                     Data['birthDate']=_birthDateController.text;
-                     Data['gender']=selectedgender==0?"male":"female";
-                     var bmimodel = BmiResponse.fromJson(Data);
-                     print(Data["status"]);
-                     if (!mounted) return;
-                     Navigator.push(context, MaterialPageRoute(builder: (context) => BmiDetails(bmiModel: bmimodel)));
-
-
-
-
-
-                   }
+                    if (res.data != null) {
+                      var Data = res.data;
+                      Data['name'] = _TextName.text;
+                      Data['birthDate'] = _birthDateController.text;
+                      Data['gender'] = selectedgender == 0 ? "male" : "female";
+                      var bmimodel = BmiResponse.fromJson(Data);
+                      print(Data["status"]);
+                      if (!mounted) return;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BmiDetails(bmiModel: bmimodel),
+                        ),
+                      );
+                    }
                   }
-
                 },
 
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text("Calculate BMI",
-                      style: TextStyle(fontSize: 20, color: Colors.white,
-                      ),
+                    Text(
+                      "Calculate BMI",
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 40,)
-
-
-
-            ],),
-
-
+              SizedBox(height: 40),
+            ],
+          ),
         ),
       ),
     );
-
   }
 }
