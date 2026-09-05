@@ -11,7 +11,9 @@ void main()  {
 
      @override
    Widget build(BuildContext context) {
-       return  const MaterialApp( title: "BMI calculation",
+       return  const MaterialApp(
+
+         debugShowCheckedModeBanner: false,title: "BMI calculation",
        home: WelcomePage(),);
     }
    }
