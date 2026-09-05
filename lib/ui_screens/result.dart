@@ -52,6 +52,20 @@ class BmiDetails extends StatelessWidget {
       return 'Your BMI is in the obesity range';
     }
   }
+  String getBmiAdvice() {
+    double bmi = bmiModel.data?.bmi ?? 0.0;
+
+    if (bmi < 18.5) {
+      return 'Your body weight is lower than normal. Try to eat a nutrient-rich and balanced diet with sufficient calories.';
+    } else if (bmi < 25) {
+      return 'You have a healthy body weight. Keep maintaining a balanced lifestyle and regular physical activity.';
+    } else if (bmi < 30) {
+      return 'You are slightly above the recommended weight. Focus on reducing sugars and staying active daily.';
+    } else {
+      return 'Your weight falls into the obesity range. It is recommended to follow a balanced meal plan and consult a specialist.';
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +90,7 @@ class BmiDetails extends StatelessWidget {
           children: [
             Container(
               width: 400,
-              height: 298,
+              height: 350,
               decoration: BoxDecoration(
                 color: Color(0xff7876CD),
                 borderRadius: BorderRadiusGeometry.circular(20),
@@ -211,11 +225,11 @@ class BmiDetails extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 20),
+            SizedBox(height: 50),
 
             Container(
               width: 400,
-              height: 350,
+              height: 200,
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Color(0xff01502E),
@@ -245,16 +259,9 @@ class BmiDetails extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    'Lorem ipsum dolor sit amet consectetur. '
-                        'Sagittis interdum dui enim imperdiet sapien cursus velit '
-                        'pharetra. Viverra justo tempor dictum odio. Nisl non dui '
-                        'integer orci nulla eget laoreet tellus. Orci nunc a orci '
-                        'convallis ac orci. Urna auctor at elementum sit ante '
-                        'maecenas ullamcorper rhoncus. Morbi venenatis lectus '
-                        'ultrices euismod. Laoreet purus risus amet enim sagittis ut. '
-                        'Consectetur libero orci urna.',
+                    getBmiAdvice(),
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 16,
                       fontWeight: FontWeight.w400,
                       color: Colors.white,
                     ),
@@ -262,9 +269,10 @@ class BmiDetails extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 40,),
+            SizedBox(height: 50,),
             SizedBox(
                 width: 420,
+                height: 60,
 
                 child:  ElevatedButton(onPressed:(){
                   Navigator.pop(context);
@@ -274,7 +282,7 @@ class BmiDetails extends StatelessWidget {
                   style:ElevatedButton.styleFrom(backgroundColor: Color(0xff484783),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(10))),)
             ),
-            SizedBox(height: 15,),
+            SizedBox(height: 40,),
 
 
           ],
